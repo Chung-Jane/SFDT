@@ -1,0 +1,132 @@
+{
+  "general_slots": {
+    "target_product": "스마트 워치",
+    "goal_quantity": "300개",
+    "work_time": "6시간",
+    "default_network": "Wireless",
+    "required_parts": {
+      "시계 본체": 1,
+      "스트랩": 1,
+      "메인보드": 1,
+      "배터리": 1
+    }
+  },
+  "step_slots": [
+    {
+      "line_name": "라인 A",
+      "step_name": "메인보드 및 배터리 조립",
+      "next_step": "펌웨어 다운로드",
+      "min_quality": "95",
+      "resource_type": "worker",
+      "resource_slots": {
+        "worker": {
+          "role": "작업자",
+          "worker_count": 3,
+          "processing_time_mean": 10.0,
+          "processing_time_std": 1.5,
+          "working_time": 50,
+          "break_time": 10,
+          "defect_probability": 0.05,
+          "defect_mean": 0.01,
+          "defect_std": 0.002
+        },
+        "machine": null
+      },
+      "network_slots": [
+        {
+          "target_node": "서버",
+          "connection_type": "Wireless",
+          "content_type": "monitoring",
+          "reliability": "High",
+          "net_device": "Wifi",
+          "lick_capacity": "100M",
+          "delay": 0,
+          "error_rate": 0.01,
+          "wifi_standard": "Wifi 6",
+          "packet_size": 64,
+          "data_rate": "1K",
+          "application_type": "UdpClient",
+          "interval": 1,
+          "protocol": "TCP"
+        }
+      ]
+    },
+    {
+      "line_name": "라인 A",
+      "step_name": "펌웨어 다운로드",
+      "next_step": "스트랩 연결",
+      "min_quality": "90",
+      "resource_type": "machine",
+      "resource_slots": {
+        "worker": null,
+        "machine": {
+          "machine_name": "PC",
+          "machine_condition": null,
+          "machine_count": 1,
+          "modelica_class": "null",
+          "cycle_time": 300,
+          "mtbf": 500,
+          "mttr": 30,
+          "efficiency": 0.8
+        }
+      },
+      "network_slots": [
+        {
+          "target_node": "서버",
+          "connection_type": "Wireless",
+          "content_type": "log",
+          "reliability": "Low",
+          "net_device": "Wifi",
+          "lick_capacity": "100M",
+          "delay": 0,
+          "error_rate": 0.01,
+          "wifi_standard": "Wifi 6",
+          "packet_size": 64,
+          "data_rate": "1K",
+          "application_type": "UdpClient",
+          "interval": 1,
+          "protocol": "UDP"
+        }
+      ]
+    },
+    {
+      "line_name": "라인 A",
+      "step_name": "스트랩 연결",
+      "next_step": null,
+      "min_quality": "97",
+      "resource_type": "worker",
+      "resource_slots": {
+        "worker": {
+          "role": "숙련된 작업자",
+          "worker_count": 2,
+          "processing_time_mean": 12.0,
+          "processing_time_std": 2.0,
+          "working_time": 50,
+          "break_time": 10,
+          "defect_probability": 0.1,
+          "defect_mean": 0.02,
+          "defect_std": 0.005
+        },
+        "machine": null
+      },
+      "network_slots": [
+        {
+          "target_node": "서버",
+          "connection_type": "Wireless",
+          "content_type": "monitoring",
+          "reliability": "High",
+          "net_device": "Wifi",
+          "lick_capacity": "100M",
+          "delay": 0,
+          "error_rate": 0.01,
+          "wifi_standard": "Wifi 6",
+          "packet_size": 64,
+          "data_rate": "1K",
+          "application_type": "UdpClient",
+          "interval": 1,
+          "protocol": "TCP"
+        }
+      ]
+    }
+  ]
+}
